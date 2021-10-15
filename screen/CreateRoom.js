@@ -1,27 +1,23 @@
 import React, { useEffect } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-const HomeScreen = ({navigation}) => {
-  return(
-    <View>
-        <View style={styles.header}>
-            <Text style={styles.headerText}>MaHan</Text>
-        </View>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <View>
-                <Text>Back to Login</Text>
+const CreateRoom = ({ navigation }) => {
+    return (
+        <View>
+            <View style={styles.header}>
+                <Text style={styles.headerText}>สร้างห้อง</Text>
             </View>
-        </TouchableOpacity>
 
-    </View>
-  )
+
+
+        </View>
+    )
 }
 
-export default HomeScreen;
+export default CreateRoom;
 
 const styles = StyleSheet.create({
     header: {

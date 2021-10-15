@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screen/LoginScreen';
 import MainScreen from './screen/MainScreen';
 import HomeScreen from './screen/HomeScreen';
+import CreateRoom from './screen/CreateRoom';
 
 const AppStack = createStackNavigator();
 
@@ -22,11 +23,18 @@ const App = () => {
         <AppStack.Screen
           name="Main"
           component={MainScreen}
+          options={{header: () => null}}
         />
 
         <AppStack.Screen
           name="Home"
           component={HomeScreen}
+        />
+
+        <AppStack.Screen
+          name="CreateRoom"
+          component={CreateRoom}
+          
         />
 
 
