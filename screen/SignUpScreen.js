@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import FormRedButton from '../components/FormRedButton'
 
 
 const SignupScreen = ({ navigation }) => {
@@ -47,7 +48,7 @@ const SignupScreen = ({ navigation }) => {
                 onPress={() => alert("Sign Up")}
             />
 
-            <FormButton
+            <FormRedButton
                 buttonTitle="Back"
                 onPress={() => navigation.navigate('Login')}
             />
