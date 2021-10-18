@@ -2,28 +2,46 @@ import React, { useEffect } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Card from './CardFolder/CardHome'
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const HomeScreen = ({navigation}) => {
+    const imageInfo_1 = {
+        uri: "https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png"
+      }
+    const imageInfo_2 = {
+        uri: "https://s.isanook.com/hi/0/ud/298/1494545/5.jpg"
+      }
+
+
   return(
+    <ScrollView>
     <View>
         <View style={styles.header}>
             <Text style={styles.headerText}>MaHan</Text>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <View>
-                <Text>Back to Login</Text>
-            </View>
-        </TouchableOpacity>
+        
+
+        
+        
+        <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
+        <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
+        <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
+        
 
     </View>
+    </ScrollView>
   )
 }
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+    cardPos: {
+        flexDirection: 'row',
+    },
     header: {
         backgroundColor: 'white',
         width: '100%',
