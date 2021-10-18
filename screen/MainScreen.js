@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
+
 import HomeScreen from './HomeScreen';
 import CreateRoom from './CreateRoom';
 import ChatScreen from './ChatScreen';
@@ -42,7 +43,7 @@ const MainScreen = ({ navigation }) => {
         options={{
           tabBarLabel: 'ข้อความ',
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="comment" color={color} size={size} />
+            <Icon name="chatbubble-ellipses-outline" color={color} size={size} />
           ),
         }}
       />
