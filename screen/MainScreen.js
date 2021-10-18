@@ -16,9 +16,9 @@ const MainScreen = ({ navigation }) => {
     <Tab.Navigator
       initialRouteName="Main"
       tabBarOptions={{
-        activeTintColor: '#fff',
-        activeBackgroundColor: 'blue',
-        inactiveBackgroundColor: 'blue',
+        activeTintColor: 'red',
+        activeBackgroundColor: 'white',
+        inactiveBackgroundColor: 'white',
         labelStyle: { fontSize: 14 },
       }}
 
@@ -29,7 +29,7 @@ const MainScreen = ({ navigation }) => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="book" color={color} size={size} />
+            <FontAwesome5 name="home" color={color} size={size} />
           ),
         }}
       />
