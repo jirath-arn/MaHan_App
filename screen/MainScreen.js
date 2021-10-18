@@ -7,6 +7,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from './HomeScreen';
 import CreateRoom from './CreateRoom';
+import ChatScreen from './ChatScreen';
+import ProfileScreen from './ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,9 +29,20 @@ const MainScreen = ({ navigation }) => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'หน้าหลัก',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="home" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={{
+          tabBarLabel: 'ข้อความ',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="comment" color={color} size={size} />
           ),
         }}
       />
@@ -40,7 +53,20 @@ const MainScreen = ({ navigation }) => {
         options={{
           tabBarLabel: 'สร้างห้อง',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="home" color={color} size={size} />
+            <FontAwesome5 name="plus" color={color} size={size} />
+          ),
+        }}
+      />
+
+
+
+      <Tab.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'โปรไฟล์',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="user-alt" color={color} size={size} />
           ),
         }}
       />

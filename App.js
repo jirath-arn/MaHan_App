@@ -7,6 +7,9 @@ import LoginScreen from './screen/LoginScreen';
 import MainScreen from './screen/MainScreen';
 import HomeScreen from './screen/HomeScreen';
 import CreateRoom from './screen/CreateRoom';
+import ChatScreen from './screen/ChatScreen';
+import { Profiler } from 'react/cjs/react.production.min';
+import ProfileScreen from './screen/ProfileScreen';
 
 const AppStack = createStackNavigator();
 
@@ -34,6 +37,18 @@ const App = () => {
         <AppStack.Screen
           name="CreateRoom"
           component={CreateRoom}
+          
+        />
+
+        <AppStack.Screen
+          name="ChatScreen"
+          component={ChatScreen}
+          
+        />
+
+        <AppStack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
           
         />
 

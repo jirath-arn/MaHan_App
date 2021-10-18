@@ -8,3 +8,5 @@ const ChatScreen = ({navigation}) => {
         </View>
     )
 }
+
+export default ChatScreen;
