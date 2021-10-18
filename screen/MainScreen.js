@@ -17,10 +17,11 @@ const MainScreen = ({ navigation }) => {
       initialRouteName="Main"
       tabBarOptions={{
         activeTintColor: '#fff',
-        activeBackgroundColor: 'blue',
+        activeBackgroundColor: 'red',
         inactiveBackgroundColor: 'blue',
         labelStyle: { fontSize: 14 },
       }}
+    
 
     >
       <Tab.Screen
@@ -38,11 +39,11 @@ const MainScreen = ({ navigation }) => {
         name="CreateRoom"
         component={CreateRoom}
         options={{
-          tabBarLabel: 'สร้างห้อง',
+          tabBarLabel: 'Create Room',
           tabBarIcon: ({ color, size }) => (
             <Icon name="home" color={color} size={size} />
           ),
-        }}
+        }}        
       />
     </Tab.Navigator>
 
