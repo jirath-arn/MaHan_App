@@ -8,6 +8,7 @@ const CreateRoom = ({ navigation }) => {
     const [name, onChangeText] = useState();
     const [password, onChangePassword] = useState();
     const [confirmPassword, onChangeConfirmPassword] = useState();
+    const [description, onChangeDescription] = useState();
     //const [number, onChangeNumber] = useState(null);
 
     return (
@@ -27,6 +28,14 @@ const CreateRoom = ({ navigation }) => {
                 <SafeAreaView >
                     <TextInput 
                         style={styles.inputText}
+                        onChangeText={onChangeDescription}
+                        value={description} 
+                        placeholder="Description"
+                    />
+                </SafeAreaView>
+                <SafeAreaView >
+                    <TextInput 
+                        style={styles.inputText}
                         onChangeText={onChangePassword}
                         value={password} 
                         placeholder="Password"
@@ -40,7 +49,7 @@ const CreateRoom = ({ navigation }) => {
                         value={confirmPassword} 
                         placeholder="Confirm Password"
                     />
-                </SafeAreaView>
+                </SafeAreaView>                
                 <TouchableOpacity style={styles.button} onPress={() => alert("error")}>
                     <Text style={styles.headerText}>Create</Text>
                 </TouchableOpacity>
@@ -62,7 +71,8 @@ const styles = StyleSheet.create({
       },
     header: {
         backgroundColor: 'white',
-        height: 80,
+        width: '100%',
+        height: 50,
         justifyContent: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -72,8 +82,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.75,
         shadowRadius: 5,
         elevation: 9,
-        borderWidth: 1,
-        margin: 20,
     },
     inputText: {
         color: 'black',
