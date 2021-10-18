@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 import HomeScreen from './HomeScreen';
@@ -14,7 +15,7 @@ import ProfileScreen from './ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 const MainScreen = ({ navigation }) => {
-
+  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       initialRouteName="Main"
@@ -23,6 +24,7 @@ const MainScreen = ({ navigation }) => {
         activeBackgroundColor: 'white',
         inactiveBackgroundColor: 'white',
         labelStyle: { fontSize: 14 },
+        style: { height: 60 + insets.bottom },
       }}
 
     >
