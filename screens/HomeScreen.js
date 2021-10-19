@@ -22,15 +22,18 @@ const HomeScreen = ({navigation}) => {
         <View style={stylesApp.header}>
             <Text style={stylesApp.headerText}>MaHan</Text>
         </View>
-
-        
-
-        
         
         <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
         
+
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateRoom')}>
+            <Text style={styles.headerText}>Create Room</Text>
+        </TouchableOpacity>
+
+
+
 
     </View>
     </ScrollView>
@@ -63,4 +66,11 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: 'center',
     },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 20,
+        margin: 20,
+        borderWidth: 1,
+      }
 })

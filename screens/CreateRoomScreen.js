@@ -15,7 +15,7 @@ const CreateRoom = ({ navigation }) => {
     return (
         <View>
             <View style={stylesApp.header}>
-                    <Text style={stylesApp.headerText}>สร้างห้อง</Text>
+                <Text style={stylesApp.headerText}>สร้างห้อง</Text>
             </View>
             
             <View  style={styles.container}>
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 20,
-        margin: 20,
-        borderWidth: 1,
-      },
+    //button: {
+        //alignItems: "center",
+        //backgroundColor: "#DDDDDD",
+        //padding: 20,
+        //margin: 20,
+        //borderWidth: 1,
+      //},
 })
