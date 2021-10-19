@@ -1,60 +1,68 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { and, or } from 'react-native-reanimated';
 
 const CreateRoom = ({ navigation }) => {
 
-    const [name, onChangeText] = useState();
-    const [password, onChangePassword] = useState();
-    const [confirmPassword, onChangeConfirmPassword] = useState();
-    const [description, onChangeDescription] = useState();
-    //const [number, onChangeNumber] = useState(null);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    function submitHandler(name, description, password, confirmPassword){
+        if (name == '' || description == '' || password == '' || confirmPassword == ''){
+            Alert.alert("OOPS!","Please fill in entry space", [
+                {text: "Understood", onPress: () => console.log("alert closed")}
+            ]);
+        } else {
+            Alert.alert("OOPS!","ส่งข้อมูลไปหน้า Main เพื่อสร้างห้อง", [
+                {text: "Understood", onPress: () => console.log("alert closed")}
+            ]);
+        }
+    }
 
     return (
         <View>
             <View style={styles.header}>
                     <Text style={styles.headerText}>Create Room</Text>
             </View>
+            
             <View  style={styles.container}>
                 <SafeAreaView >
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={onChangeText}
-                        value={name}
+                        onChangeText={setName}
                         placeholder="Room Name"
                     />
-                </SafeAreaView>
-                <SafeAreaView >
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={onChangeDescription}
-                        value={description} 
+                        onChangeText={setDescription}
                         placeholder="Description"
                     />
-                </SafeAreaView>
-                <SafeAreaView >
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={onChangePassword}
-                        value={password} 
+                        onChangeText={setPassword}
                         placeholder="Password"
                         //keyboardType="numeric" สำหรับใส่ตัวเลขเท่านั้น
                     />
-                </SafeAreaView>
-                <SafeAreaView >
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={onChangeConfirmPassword}
-                        value={confirmPassword} 
+                        onChangeText={setConfirmPassword}
                         placeholder="Confirm Password"
                     />
-                </SafeAreaView>                
-                <TouchableOpacity style={styles.button} onPress={() => alert("error")}>
+                </SafeAreaView>
+
+                <TouchableOpacity style={styles.button} 
+                    onPress={() => submitHandler(name, description, password, confirmPassword)}>
                     <Text style={styles.headerText}>Create</Text>
                 </TouchableOpacity>
+                <Text>name:{name}</Text>
+                <Text>description:{description}</Text>
+                <Text>password:{password}</Text>
+                <Text>confirmPassword:{confirmPassword}</Text>
             </View>
-
         </View>
     );
 };
@@ -68,6 +76,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         backgroundColor: "white",
+        borderRadius: 10,
       },
     header: {
         backgroundColor: 'white',
@@ -91,6 +100,7 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 20,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     headerText: {
@@ -102,8 +112,9 @@ const styles = StyleSheet.create({
     button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
-        padding: 20,
+        padding: 15,
         margin: 20,
         borderWidth: 1,
+        borderRadius: 10,
       },
 })
