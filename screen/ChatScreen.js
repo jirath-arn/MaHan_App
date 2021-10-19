@@ -5,7 +5,7 @@ const ChatScreen = ({navigation}) => {
     return(
         <View>
             <View style={styles.header}>
-                <Text style={styles.headerText}>ข้อความ</Text>
+                <Text style={styles.headerText}>Chat</Text>
             </View>
         </View>
     )

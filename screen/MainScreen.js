@@ -33,7 +33,7 @@ const MainScreen = ({ navigation }) => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'หน้าหลัก',
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="home" color={color} size={size} />
           ),
@@ -44,7 +44,7 @@ const MainScreen = ({ navigation }) => {
         name="ChatScreen"
         component={ChatScreen}
         options={{
-          tabBarLabel: 'ข้อความ',
+          tabBarLabel: 'Chat',
           tabBarIcon: ({ color, size }) => (
             <Icon name="chatbubble-ellipses-outline" color={color} size={size} />
           ),
@@ -68,7 +68,7 @@ const MainScreen = ({ navigation }) => {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'โปรไฟล์',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="user-alt" color={color} size={size} />
           ),
