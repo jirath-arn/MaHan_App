@@ -5,7 +5,7 @@ const ProfileScreen = ({ navigation }) => {
     return (
         <View>
             <View style={styles.header}>
-                <Text style={styles.headerText}>โปรไฟล์</Text>
+                <Text style={styles.headerText}>Profile</Text>
             </View>
 
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
