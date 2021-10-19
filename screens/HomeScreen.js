@@ -72,5 +72,6 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 20,
         borderWidth: 1,
+        borderRadius: 20,
       }
 })

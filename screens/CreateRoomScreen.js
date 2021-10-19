@@ -74,10 +74,11 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
         margin: 20,
-        borderWidth: 1,
+        borderWidth: 5,
         padding: 10,
-        backgroundColor: "white",
+        backgroundColor: "#fb726a",
         borderRadius: 10,
+        marginTop: 35,
       },
     header: {
         backgroundColor: 'white',
@@ -100,9 +101,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         height: 40,
         margin: 20,
-        borderWidth: 1,
+        borderWidth: 3,
         borderRadius: 10,
         padding: 10,
+        backgroundColor: 'white',
     },
     headerText: {
         color: 'black',
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#DDDDDD",
         padding: 15,
         margin: 20,
-        borderWidth: 1,
+        borderWidth: 3,
         borderRadius: 10,
       },
 })
