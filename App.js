@@ -1,39 +1,43 @@
 import React, { useEffect } from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import LoginScreen from './screen/LoginScreen';
-import MainScreen from './screen/MainScreen';
-import HomeScreen from './screen/HomeScreen';
-import CreateRoom from './screen/CreateRoom';
-import ChatScreen from './screen/ChatScreen';
 import { Profiler } from 'react/cjs/react.production.min';
-import ProfileScreen from './screen/ProfileScreen';
-import SignupScreen from './screen/SignUpScreen';
+
+
+import LoginScreen from './screens/LoginScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import MainScreen from './screens/MainScreen';
+
+import HomeScreen from './screens/HomeScreen';
+import ChatScreen from './screens/ChatScreen';
+import CreateRoomScreen from './screens/CreateRoomScreen';
+import NotificationScreen from './screens/NotificationScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
 
 const AppStack = createStackNavigator();
 
 const App = () => {
-  return(
+  return (
     <NavigationContainer>
       <AppStack.Navigator>
         <AppStack.Screen
           name="Login"
           component={LoginScreen}
-          options={{header: () => null}}
+          options={{ header: () => null }}
         />
 
         <AppStack.Screen
-          name="Signup"
-          component={SignupScreen}
-          options={{header: () => null}}
+          name="SignUp"
+          component={SignUpScreen}
+          options={{ header: () => null }}
         />
 
         <AppStack.Screen
           name="Main"
           component={MainScreen}
-          options={{header: () => null}}
+          options={{ header: () => null }}
         />
 
         <AppStack.Screen
@@ -42,28 +46,27 @@ const App = () => {
         />
 
         <AppStack.Screen
-          name="CreateRoom"
-          component={CreateRoom}
-          
-        />
-
-        <AppStack.Screen
-          name="ChatScreen"
+          name="Chat"
           component={ChatScreen}
-          
         />
 
         <AppStack.Screen
-          name="ProfileScreen"
-          component={ProfileScreen}
-          
+          name="CreateRoom"
+          component={CreateRoomScreen}
         />
 
+        <AppStack.Screen
+          name="Notification"
+          component={NotificationScreen}
+        />
 
+        <AppStack.Screen
+          name="Profile"
+          component={ProfileScreen}
+        />
       </AppStack.Navigator>
     </NavigationContainer>
   )
-}
+};
 
 export default App;
-

@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 import HomeScreen from './HomeScreen';
-import CreateRoom from './CreateRoom';
 import ChatScreen from './ChatScreen';
+import CreateRoomScreen from './CreateRoomScreen';
+import NotificationScreen from './NotificationScreen';
 import ProfileScreen from './ProfileScreen';
+
 
 const Tab = createBottomTabNavigator();
 
 const MainScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       initialRouteName="Main"
       tabBarOptions={{
-        activeTintColor: 'red',
-        activeBackgroundColor: 'white',
-        inactiveBackgroundColor: 'white',
-        labelStyle: { fontSize: 14 },
-        style: { height: 60 + insets.bottom },
+        activeTintColor: '#fb726a',
+        activeBackgroundColor: '#ffffff',
+        inactiveBackgroundColor: '#ffffff',
+        labelStyle: { fontSize: 14, paddingBottom: 7 },
+        style: { height: 67 + insets.bottom, paddingTop: 7 },
       }}
-    
-
     >
       <Tab.Screen
         name="Home"
@@ -41,52 +43,54 @@ const MainScreen = ({ navigation }) => {
       />
 
       <Tab.Screen
-        name="ChatScreen"
+        name="Chat"
         component={ChatScreen}
         options={{
           tabBarLabel: 'ข้อความ',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="chatbubble-ellipses-outline" color={color} size={size} />
+            <FontAwesome5 name="comment-dots" color={color} size={size} />
           ),
         }}
       />
 
       <Tab.Screen
         name="CreateRoom"
-        component={CreateRoom}
+        component={CreateRoomScreen}
         options={{
-          tabBarLabel: 'Create Room',
+          tabBarLabel: 'สร้างห้อง',
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="plus" color={color} size={size} />
+            <FontAwesome5 name="plus-circle" color={color} size={size} />
           ),
         }}
       />
 
-
+      <Tab.Screen
+        name="Notification"
+        component={NotificationScreen}
+        options={{
+          tabBarLabel: 'แจ้งเตือน',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="bell" color={color} size={size} />
+          ),
+        }}
+      />
 
       <Tab.Screen
-        name="ProfileScreen"
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarLabel: 'โปรไฟล์',
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="user-alt" color={color} size={size} />
+            <FontAwesome5 name="user-circle" color={color} size={size} />
           ),
-        }}        
+        }}
       />
     </Tab.Navigator>
-
-
-
   )
-}
+};
 
 export default MainScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
+
+});
