@@ -54,17 +54,6 @@ const MainScreen = ({ navigation }) => {
       />
 
       <Tab.Screen
-        name="CreateRoom"
-        component={CreateRoomScreen}
-        options={{
-          tabBarLabel: 'สร้างห้อง',
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="plus-circle" color={color} size={size} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
         name="Notification"
         component={NotificationScreen}
         options={{
