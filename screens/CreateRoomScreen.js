@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import stylesApp from '../assets/css/Styles';
 
 const CreateRoom = ({ navigation }) => {
 
@@ -13,9 +14,10 @@ const CreateRoom = ({ navigation }) => {
 
     return (
         <View>
-            <View style={styles.header}>
-                    <Text style={styles.headerText}>Create Room</Text>
+            <View style={stylesApp.header}>
+                    <Text style={stylesApp.headerText}>สร้างห้อง</Text>
             </View>
+            
             <View  style={styles.container}>
                 <SafeAreaView >
                     <TextInput 

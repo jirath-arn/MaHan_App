@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import stylesApp from '../assets/css/Styles';

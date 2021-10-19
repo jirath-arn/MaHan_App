@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Card from './CardFolder/CardHome'
 import { ScrollView } from 'react-native-gesture-handler';
+import stylesApp from '../assets/css/Styles';
 
 
 const HomeScreen = ({navigation}) => {
@@ -18,8 +19,8 @@ const HomeScreen = ({navigation}) => {
   return(
     <ScrollView>
     <View>
-        <View style={styles.header}>
-            <Text style={styles.headerText}>MaHan</Text>
+        <View style={stylesApp.header}>
+            <Text style={stylesApp.headerText}>MaHan</Text>
         </View>
 
         
