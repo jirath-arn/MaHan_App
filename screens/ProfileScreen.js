@@ -1,9 +1,9 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-const ProfileScreen = ({navigation}) => {
-    return(
-        <View > 
+const ProfileScreen = ({ navigation }) => {
+    return (
+        <View>
             <View style={styles.header}>
                 <Text style={styles.headerText}>โปรไฟล์</Text>
             </View>
@@ -13,7 +13,7 @@ const ProfileScreen = ({navigation}) => {
                     <Text style={styles.backFont}>Back to Login</Text>
                 </View>
             </TouchableOpacity>
-            
+
 
         </View>
     )
