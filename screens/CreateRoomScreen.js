@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-<<<<<<< HEAD:screen/CreateRoom.js
 import { and, or } from 'react-native-reanimated';
-=======
 import stylesApp from '../assets/css/Styles';
->>>>>>> 7658a37aa4d252d84c84ca8188b5aa023d4e727c:screens/CreateRoomScreen.js
 
 const CreateRoom = ({ navigation }) => {
 
@@ -113,7 +110,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
     },
-<<<<<<< HEAD:screen/CreateRoom.js
     button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
@@ -122,13 +118,4 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
       },
-=======
-    //button: {
-        //alignItems: "center",
-        //backgroundColor: "#DDDDDD",
-        //padding: 20,
-        //margin: 20,
-        //borderWidth: 1,
-      //},
->>>>>>> 7658a37aa4d252d84c84ca8188b5aa023d4e727c:screens/CreateRoomScreen.js
 })
