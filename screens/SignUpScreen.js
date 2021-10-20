@@ -1,26 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FormRedButton from '../components/FormRedButton'
+import { firebase } from '../firebase/Firebase'
 
+import { AuthContext } from "../database/AuthProvider";
 
-const SignupScreen = ({ navigation }) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
+export default function SignupScreen ({ navigation }) {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const { register } = useContext(AuthContext);
+    
+    const goSignUp = () => {
+        if (confirmPassword == ""){
+            alert("Please Enter Password 2")
+        }
+        else if (email == "") {
+            alert("Please Enter Email")
+        }
+        else if (password == "") {
+            alert("Please Enter Password")
+        }
+        else{
+            register(email,password);
+        }
+    }
     return (
         <View style={styles.container}>
-            {/* <Image
-                source={require('../Logo/Mahan2.jpg')}
-                style={styles.logo}
-            /> */}
             <Text style={styles.text}>Create an account</Text>
             {/* UserName */}
             <FormInput
                 lableValue={email}
-                onChangeText={(userEmail) => setUsername(userEmail)}
+                onChangeText={(userEmail) => setEmail(userEmail)}
                 placeholderText="Email"
                 iconType="user"
                 autoCapitalize="none"
@@ -44,8 +59,8 @@ const SignupScreen = ({ navigation }) => {
             />
 
             <FormButton
-                buttonTitle="Sign In"
-                onPress={() => alert("Sign Up")}
+                buttonTitle="Sign Up"
+                onPress={() => goSignUp()}
             />
 
             <FormRedButton
@@ -82,7 +97,6 @@ const SignupScreen = ({ navigation }) => {
     )
 }
 
-export default SignupScreen;
 
 const styles = StyleSheet.create({
     container: {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "70721173385",
+    "project_id": "mahan-project-7376d",
+    "storage_bucket": "mahan-project-7376d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70721173385:android:0c4a1c4e919fa40a3b5358",
+        "android_client_info": {
+          "package_name": "com.mahan_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70721173385-ri6b7o7rp5ea5sboba4k968t8qi1l62u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSjBxbwFeMbP6gD_n8YtaZMrZQalG8d_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70721173385-ri6b7o7rp5ea5sboba4k968t8qi1l62u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import stylesApp from '../assets/css/Styles';
+import { AuthContext } from '../database/AuthProvider';
 
 
-const ProfileScreen = ({ navigation }) => {
+export default function ProfileScreen ({navigation}) {
+
+    const {user, logout} = useContext(AuthContext)
+
     return (
         <View>
             <View style={stylesApp.header}>
@@ -92,7 +96,7 @@ const ProfileScreen = ({ navigation }) => {
             </TouchableOpacity>
 
             {/* Logout */}
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity onPress={() => logout()}>
                 <View style={styles.logoutView}>
                     <Text style={styles.logoutText}>ออกจากระบบ</Text>
                 </View>
@@ -101,7 +105,6 @@ const ProfileScreen = ({ navigation }) => {
     )
 };
 
-export default ProfileScreen;
 
 const styles = StyleSheet.create({
     logoutText: {

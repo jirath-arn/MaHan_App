@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 import HomeScreen from './HomeScreen';
@@ -49,6 +50,17 @@ const MainScreen = ({ navigation }) => {
           tabBarLabel: 'ข้อความ',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="comment-dots" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Create"
+        component={CreateRoomScreen}
+        options={{
+          tabBarLabel: 'สร้างห้อง',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="pluscircleo" color={color} size={size} />
           ),
         }}
       />

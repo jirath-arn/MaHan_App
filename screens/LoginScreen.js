@@ -1,17 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import { AuthContext } from '../database/AuthProvider';
 
 
 const AppStack = createStackNavigator();
 
-const LoginScreen = ({ navigation }) => {
+export default function LoginScreen ({navigation}) {
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { login } = useContext(AuthContext);
+
+    const goLogin = () => {
+        if (username == "" && password == "") {
+            alert("Please Enter Username or Password")
+        }
+        else{
+            login(username,password);
+        }
+    }
 
     return (
         <View style={styles.body}>
@@ -49,7 +61,7 @@ const LoginScreen = ({ navigation }) => {
 
             <FormButton
                 buttonTitle="Sign In"
-                onPress={() => alert("Sign In")}
+                onPress={() => goLogin()}
             />
 
             <TouchableOpacity
@@ -62,7 +74,6 @@ const LoginScreen = ({ navigation }) => {
     )
 }
 
-export default LoginScreen;
 
 const styles = StyleSheet.create({
     body: {
