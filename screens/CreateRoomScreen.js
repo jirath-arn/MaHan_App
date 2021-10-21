@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { and, or } from 'react-native-reanimated';
 import stylesApp from '../assets/css/Styles';
 
 const CreateRoom = ({ navigation }) => {
@@ -14,12 +13,12 @@ const CreateRoom = ({ navigation }) => {
 
     function submitHandler(name, description, password, confirmPassword){
         if (name == '' || description == '' || password == '' || confirmPassword == ''){
-            Alert.alert("OOPS!","Please fill in entry space", [
-                {text: "Understood", onPress: () => console.log("alert closed")}
+            Alert.alert("แจ้งเตือน!","กรุณาเติมคำในช่องว่างให้ครบ", [
+                {text: "เข้าใจแล้ว", onPress: () => console.log("alert closed")}                
             ]);
         } else {
-            Alert.alert("OOPS!","ส่งข้อมูลไปหน้า Main เพื่อสร้างห้อง", [
-                {text: "Understood", onPress: () => console.log("alert closed")}
+            Alert.alert("สำเร็จ!","สร้างห้องสำเร็จ", [
+                {text: "เสร็จสิ้น", onPress: () => navigation.navigate('Home')}
             ]);
         }
     }
@@ -35,34 +34,31 @@ const CreateRoom = ({ navigation }) => {
                     <TextInput 
                         style={styles.inputText}
                         onChangeText={setName}
-                        placeholder="Room Name"
+                        placeholder="ชื่อห้อง"
                     />
                     <TextInput 
                         style={styles.inputText}
                         onChangeText={setDescription}
-                        placeholder="Description"
+                        placeholder="คำอธิบาย"
                     />
                     <TextInput 
                         style={styles.inputText}
                         onChangeText={setPassword}
-                        placeholder="Password"
+                        placeholder="รหัสผ่าน"
                         //keyboardType="numeric" สำหรับใส่ตัวเลขเท่านั้น
                     />
                     <TextInput 
                         style={styles.inputText}
                         onChangeText={setConfirmPassword}
-                        placeholder="Confirm Password"
+                        placeholder="ยืนยันรหัสผ่าน"
                     />
                 </SafeAreaView>
 
-                <TouchableOpacity style={styles.button} 
+                <TouchableOpacity style={styles.button}
                     onPress={() => submitHandler(name, description, password, confirmPassword)}>
-                    <Text style={styles.headerText}>Create</Text>
+                    <Text style={styles.headerText}>สร้างห้อง</Text>
                 </TouchableOpacity>
-                <Text>name:{name}</Text>
-                <Text>description:{description}</Text>
-                <Text>password:{password}</Text>
-                <Text>confirmPassword:{confirmPassword}</Text>
+
             </View>
         </View>
     );
@@ -103,7 +99,7 @@ const styles = StyleSheet.create({
         margin: 20,
         borderWidth: 3,
         borderRadius: 10,
-        padding: 10,
+        padding: 2,
         backgroundColor: 'white',
     },
     headerText: {
@@ -115,7 +111,7 @@ const styles = StyleSheet.create({
     button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
-        padding: 15,
+        padding: 10,
         margin: 20,
         borderWidth: 3,
         borderRadius: 10,

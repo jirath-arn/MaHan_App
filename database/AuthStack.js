@@ -23,6 +23,12 @@ export default function AuthStack() {
                 component={SignUpScreen} 
 
             />
+            <Stack.Screen
+                name='Main'
+                component={MainScreen}
+                options={{ header: () => null }}
+
+            />
             {/* <Stack.Screen
                 name="Main"
                 component={MainScreen}

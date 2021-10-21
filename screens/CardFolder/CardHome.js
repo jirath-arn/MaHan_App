@@ -1,15 +1,14 @@
 import React from'react'
 import {StyleSheet,Text,Image,TouchableOpacity, View, Dimensions} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
 
 const Card = (props) => {
   return(
-    <View style={styles.bder}>
-         <TouchableOpacity style={styles.card}>
-        <Image source={props.uri} style={styles.cardImage} />
-        <View style={{marginTop:10}}>
-        <Text style={styles.cardText}>{props.title}</Text>
-        </View>
-      </TouchableOpacity>
+    <View style={styles.bder}>      
+      <Image source={props.uri} style={styles.cardImage} />
+      <View style={{marginTop:10}}>
+      <Text style={styles.cardText}>{props.title}</Text>
+      </View>
     </View>
    
 
