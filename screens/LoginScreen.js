@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         fontSize: 34,
         fontWeight: 'bold',
         color: 'black',
+        margin: 10,
     },
     maHan: {
         justifyContent: 'center',

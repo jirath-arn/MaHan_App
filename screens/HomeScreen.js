@@ -66,13 +66,22 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         textAlign: 'center',
+        color: 'white',
     },
     button: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "#fb726a",
         padding: 20,
         margin: 20,
-        borderWidth: 1,
-        borderRadius: 20,
+        // borderWidth: 1,
+        borderRadius: 30,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 5,
+            height: 5,
+        },
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        elevation: 9,
       }
 })

@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
         color: '#de4032',
         textAlign: 'center',
         fontWeight: 'bold',
+        fontSize: 18,
     },
     logoutView: {
         marginTop: 20,
