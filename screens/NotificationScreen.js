@@ -6,7 +6,7 @@ import stylesApp from '../assets/css/Styles';
 
 const NotificationScreen = ({ navigation }) => {
     return (
-        <View>
+        <View style={styles.body}>
             <View style={stylesApp.header}>
                 <Text style={stylesApp.headerText}>แจ้งเตือน</Text>
             </View>
@@ -22,5 +22,7 @@ const NotificationScreen = ({ navigation }) => {
 export default NotificationScreen;
 
 const styles = StyleSheet.create({
-
+    body: {
+        backgroundColor: "gainsboro",
+    }
 });

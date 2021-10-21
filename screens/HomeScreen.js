@@ -18,12 +18,14 @@ const HomeScreen = ({navigation}) => {
 
   return(
     <ScrollView>
-    <View>
+    <View style={styles.body}>
         <View style={stylesApp.header}>
             <Text style={stylesApp.headerText}>MaHan</Text>
         </View>
-                
-        <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Room')}>
+            <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
+        </TouchableOpacity>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
 
@@ -33,9 +35,9 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.headerText}>Create Room</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Room')}>
+        {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Room')}>
             <Text style={styles.headerText}>Test Room</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
 
 
@@ -47,11 +49,15 @@ const HomeScreen = ({navigation}) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+    body: {
+        backgroundColor: "gainsboro"
+    },
+    
     cardPos: {
         flexDirection: 'row',
     },
     header: {
-        backgroundColor: 'white',
+        backgroundColor: '#f0ffff',
         width: '100%',
         height: 50,
         justifyContent: 'center',
@@ -69,13 +75,22 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         textAlign: 'center',
+        color: '#de4032',
     },
     button: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "white",
         padding: 20,
         margin: 20,
-        borderWidth: 1,
-        borderRadius: 20,
+        // borderWidth: 1,
+        borderRadius: 30,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 5,
+            height: 5,
+        },
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        elevation: 9,
       }
 })

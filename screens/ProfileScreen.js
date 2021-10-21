@@ -10,7 +10,7 @@ export default function ProfileScreen ({navigation}) {
     const {user, logout} = useContext(AuthContext)
 
     return (
-        <View>
+        <View >
             <View style={stylesApp.header}>
                 <Text style={stylesApp.headerText}>โปรไฟล์</Text>
             </View>
@@ -107,10 +107,15 @@ export default function ProfileScreen ({navigation}) {
 
 
 const styles = StyleSheet.create({
+    body: {
+        backgroundColor: "gainsboro",
+        flex: 1,
+    },
     logoutText: {
         color: '#de4032',
         textAlign: 'center',
         fontWeight: 'bold',
+        fontSize: 18,
     },
     logoutView: {
         marginTop: 20,

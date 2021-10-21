@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f9fafd',
+        backgroundColor: 'gainsboro',
         padding: 20,
     },
     text: {

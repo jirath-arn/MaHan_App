@@ -6,7 +6,7 @@ import stylesApp from '../assets/css/Styles';
 
 const ChatScreen = ({ navigation }) => {
     return (
-        <View>
+        <View style={styles.body}>
             <View style={stylesApp.header}>
                 <Text style={stylesApp.headerText}>ข้อความ</Text>
             </View>
@@ -22,5 +22,7 @@ const ChatScreen = ({ navigation }) => {
 export default ChatScreen;
 
 const styles = StyleSheet.create({
-
+    body: {
+        backgroundColor: "gainsboro",
+    }
 });
