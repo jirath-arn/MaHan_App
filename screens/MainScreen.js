@@ -86,6 +86,7 @@ const MainScreen = ({ navigation }) => {
           ),
         }}
       />
+
     </Tab.Navigator>
   )
 };
