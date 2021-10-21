@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from '../screens/SignUpScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MainScreen from '../screens/MainScreen';
+import RoomScreen from '../screens/RoomScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
 import CreateRoom from '../screens/CreateRoomScreen';
@@ -26,6 +27,12 @@ export default function AuthStack() {
             <Stack.Screen
                 name='Main'
                 component={MainScreen}
+                options={{ header: () => null }}
+
+            />
+            <Stack.Screen
+                name='Room'
+                component={RoomScreen}
                 options={{ header: () => null }}
 
             />

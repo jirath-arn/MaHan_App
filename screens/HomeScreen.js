@@ -33,6 +33,9 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.headerText}>Create Room</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Room')}>
+            <Text style={styles.headerText}>Test Room</Text>
+        </TouchableOpacity>
 
 
 
