@@ -22,8 +22,10 @@ const HomeScreen = ({navigation}) => {
         <View style={stylesApp.header}>
             <Text style={stylesApp.headerText}>MaHan</Text>
         </View>
-                
-        <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Room')}>
+            <Card title='หาร Netflix' uri={imageInfo_1} ></Card>
+        </TouchableOpacity>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
         <Card title='หาร Youtube Premium' uri={imageInfo_2} ></Card>
 
@@ -33,9 +35,9 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.headerText}>Create Room</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Room')}>
+        {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Room')}>
             <Text style={styles.headerText}>Test Room</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
 
 
