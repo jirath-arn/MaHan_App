@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert,Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import stylesApp from '../assets/css/Styles';
 
 const CreateRoom = ({ navigation }) => {
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const reloadHandler = () =>{
+        setName("");
+        setDescription("");
+        setPassword("");
+        setConfirmPassword("");
+    }
 
     function submitHandler(name, description, password, confirmPassword){
         if (name == '' || description == '' || password == '' || confirmPassword == ''){
@@ -17,9 +24,11 @@ const CreateRoom = ({ navigation }) => {
                 {text: "เข้าใจแล้ว", onPress: () => console.log("alert closed")}                
             ]);
         } else {
+            reloadHandler()
             Alert.alert("สำเร็จ!","สร้างห้องสำเร็จ", [
                 {text: "เสร็จสิ้น", onPress: () => navigation.navigate('Home')}
             ]);
+            
         }
     }
 
@@ -31,26 +40,28 @@ const CreateRoom = ({ navigation }) => {
             
             <View  style={styles.container}>
                 <SafeAreaView >
-                    <TextInput 
+                    <TextInput
                         style={styles.inputText}
-                        onChangeText={setName}
+                        onFocus={setName}
                         placeholder="ชื่อห้อง"
+                        clearButtonMode
                     />
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={setDescription}
+                        onFocus={setDescription}
                         placeholder="คำอธิบาย"
                     />
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={setPassword}
+                        onFocus={setPassword}
                         placeholder="รหัสผ่าน"
                         //keyboardType="numeric" สำหรับใส่ตัวเลขเท่านั้น
                     />
                     <TextInput 
                         style={styles.inputText}
-                        onChangeText={setConfirmPassword}
+                        onFocus={setConfirmPassword}
                         placeholder="ยืนยันรหัสผ่าน"
+                        blurOnSubmit
                     />
                 </SafeAreaView>
 
