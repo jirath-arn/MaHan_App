@@ -18,7 +18,7 @@ const HomeScreen = ({navigation}) => {
 
   return(
     <ScrollView>
-    <View>
+    <View style={styles.body}>
         <View style={stylesApp.header}>
             <Text style={stylesApp.headerText}>MaHan</Text>
         </View>
@@ -47,11 +47,15 @@ const HomeScreen = ({navigation}) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+    body: {
+        backgroundColor: "gainsboro"
+    },
+    
     cardPos: {
         flexDirection: 'row',
     },
     header: {
-        backgroundColor: 'white',
+        backgroundColor: '#f0ffff',
         width: '100%',
         height: 50,
         justifyContent: 'center',
@@ -69,11 +73,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         textAlign: 'center',
-        color: 'white',
+        color: '#de4032',
     },
     button: {
         alignItems: "center",
-        backgroundColor: "#fb726a",
+        backgroundColor: "white",
         padding: 20,
         margin: 20,
         // borderWidth: 1,

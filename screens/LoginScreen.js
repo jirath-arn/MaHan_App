@@ -77,7 +77,7 @@ export default function LoginScreen ({navigation}) {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: '#f9fafd',
+        backgroundColor: 'gainsboro',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     maHan: {
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     logo: {
         height: 120,
@@ -117,6 +116,6 @@ const styles = StyleSheet.create({
     navButtonText: {
         fontSize: 18,
         fontWeight: '500',
-        color: '#2e64e5',
+        color: '#de4032',
     },
 })

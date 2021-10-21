@@ -24,7 +24,7 @@ const CreateRoom = ({ navigation }) => {
     }
 
     return (
-        <View>
+        <View style={styles.body}>
             <View style={stylesApp.header}>
                 <Text style={stylesApp.headerText}>สร้างห้อง</Text>
             </View>
@@ -67,6 +67,10 @@ const CreateRoom = ({ navigation }) => {
 export default CreateRoom;
 
 const styles = StyleSheet.create({
+    body: {
+        backgroundColor: "gainsboro",
+        flex: 1,
+    },
     container: {
         justifyContent: "center",
         margin: 20,
