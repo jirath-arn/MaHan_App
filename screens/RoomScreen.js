@@ -20,7 +20,7 @@ const CreateRoom = ({ navigation }) => {
                 <SafeAreaView >
 
                     <View style={styles.TopIcon}>
-                        
+
                         <TouchableOpacity>
                             <View style={styles.backgroundIcon}>
                                 <FontAwesome5 name="edit" size={25} style={styles.menuIcon} />
@@ -40,6 +40,17 @@ const CreateRoom = ({ navigation }) => {
                         <Text style={styles.textBottomPic}>Netflix</Text>
                     </View>
 
+                    <TouchableOpacity>
+                        <View style={styles.cardInvite}>
+                            <View style={styles.backgroundProfilePicture}>
+                            <Image source={require('../assets/img/Invite3.jpg')} style={styles.invite} />
+                            </View>
+                            <View style={styles.viewTextCardInvite}>
+                                <Text style={styles.textCardInvite}>Invite new member</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+
 
                 </SafeAreaView>
 
@@ -57,11 +68,39 @@ const CreateRoom = ({ navigation }) => {
 export default CreateRoom;
 
 const styles = StyleSheet.create({
+    backgroundProfilePicture: {
+    },
+    textCardInvite: {
+       fontSize: 18,
+       fontWeight: 'bold',
+       color: 'white'
+    },
+    viewTextCardInvite: {
+        marginHorizontal: 10,
+        
+    },
+    cardInvite: {
+        borderTopWidth: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    invite: {
+        height: 50,
+        width: 50,
+        resizeMode: 'cover',
+        borderRadius: 50,
+        borderColor: 'white',
+        marginTop: 5,
+        marginHorizontal: 10,
+        
+        // borderWidth: 5,
+    },
     backgroundIcon: {
         backgroundColor: 'white',
         marginHorizontal: 3,
         borderRadius: 10,
-
+        marginLeft: 3,
 
     },
     menuIcon: {
@@ -75,8 +114,8 @@ const styles = StyleSheet.create({
     textBottomPic: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginTop: 10,
         color: '#f0ffff',
+        marginVertical: 10,
     },
     picture: {
         alignItems: 'center'
@@ -99,7 +138,7 @@ const styles = StyleSheet.create({
         margin: 20,
         // borderWidth: 5,
         padding: 10,
-        backgroundColor: "darkgrey",
+        backgroundColor: "#fb726a",
         borderRadius: 30,
         marginTop: 35,
     },
