@@ -20,12 +20,19 @@ const CreateRoom = ({ navigation }) => {
                 <SafeAreaView >
 
                     <View style={styles.TopIcon}>
-                        <View style={styles.backgroundIcon}>
-                            <FontAwesome5 name="edit" size={25} style={styles.menuIcon} />
-                        </View>
-                        <View style={styles.backgroundIcon}>
-                            <AntDesign name="delete" size={25} style={styles.menuIcon} />
-                        </View>
+                        
+                        <TouchableOpacity>
+                            <View style={styles.backgroundIcon}>
+                                <FontAwesome5 name="edit" size={25} style={styles.menuIcon} />
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <View style={styles.backgroundIcon}>
+                                <AntDesign name="delete" size={25} style={styles.menuIcon} />
+                            </View>
+                        </TouchableOpacity>
+
                     </View>
 
                     <View style={styles.picture}>
@@ -33,7 +40,7 @@ const CreateRoom = ({ navigation }) => {
                         <Text style={styles.textBottomPic}>Netflix</Text>
                     </View>
 
-                    
+
                 </SafeAreaView>
 
 
@@ -54,9 +61,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginHorizontal: 3,
         borderRadius: 10,
-        
 
-    },  
+
+    },
     menuIcon: {
         marginVertical: 3,
         alignItems: 'center',
