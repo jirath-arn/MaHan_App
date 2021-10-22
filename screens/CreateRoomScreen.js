@@ -12,10 +12,10 @@ const CreateRoom = ({ navigation }) => {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const reloadHandler = () =>{
-        setName("");
-        setDescription("");
-        setPassword("");
-        setConfirmPassword("");
+        setName(null);
+        setDescription(null);
+        setPassword(null);
+        setConfirmPassword(null);
     }
 
     function submitHandler(name, description, password, confirmPassword){
@@ -24,7 +24,7 @@ const CreateRoom = ({ navigation }) => {
                 {text: "เข้าใจแล้ว", onPress: () => console.log("alert closed")}                
             ]);
         } else {
-            reloadHandler()
+            reloadHandler();
             Alert.alert("สำเร็จ!","สร้างห้องสำเร็จ", [
                 {text: "เสร็จสิ้น", onPress: () => navigation.navigate('Home')}
             ]);
@@ -41,25 +41,34 @@ const CreateRoom = ({ navigation }) => {
             <View  style={styles.container}>
                 <SafeAreaView >
                     <TextInput
+                        value={name}
                         style={styles.inputText}
                         onFocus={setName}
                         placeholder="ชื่อห้อง"
+                        onChangeText={(userName) => setName(userName)}
                         clearButtonMode
+                        
                     />
                     <TextInput 
+                        value={description}
                         style={styles.inputText}
                         onFocus={setDescription}
+                        onChangeText={(Des) => setDescription(Des)}
                         placeholder="คำอธิบาย"
                     />
                     <TextInput 
+                        value={password}
                         style={styles.inputText}
                         onFocus={setPassword}
+                        onChangeText={(password) => setPassword(password)}
                         placeholder="รหัสผ่าน"
                         //keyboardType="numeric" สำหรับใส่ตัวเลขเท่านั้น
                     />
                     <TextInput 
+                        value={confirmPassword}
                         style={styles.inputText}
                         onFocus={setConfirmPassword}
+                        onChangeText={(conpass) => setConfirmPassword(conpass)}
                         placeholder="ยืนยันรหัสผ่าน"
                         blurOnSubmit
                     />
@@ -88,7 +97,7 @@ const styles = StyleSheet.create({
         // borderWidth: 5,
         padding: 10,
         backgroundColor: "#fb726a",
-        borderRadius: 10,
+        borderRadius:10,
         marginTop: 35,
       },
     header: {
