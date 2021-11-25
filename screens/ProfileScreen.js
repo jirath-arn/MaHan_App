@@ -1,28 +1,26 @@
 import React, { useContext } from 'react';
+import { AuthContext } from '../authentication/AuthProvider';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import stylesApp from '../assets/css/Styles';
-import { AuthContext } from '../database/AuthProvider';
 
-
-export default function ProfileScreen ({navigation}) {
-
-    const {user, logout} = useContext(AuthContext)
+export default function ProfileScreen({ navigation }) {
+    const { user, logout } = useContext(AuthContext);
 
     return (
-        <View >
+        <View style={stylesApp.body}>
             <View style={stylesApp.header}>
                 <Text style={stylesApp.headerText}>โปรไฟล์</Text>
             </View>
 
             <View style={styles.profileContainer}>
                 <Image
-                    source={require('../assets/img/Profile.jpeg')}
+                    source={require('../assets/img/profile_icon.jpg')}
                     style={styles.profile}
                 />
 
                 <View style={{ paddingLeft: 20 }}>
-                    <Text style={styles.username}>Username</Text>
+                    <Text numberOfLines={1} style={styles.username}>{user ? user.email : 'Anonymous'}</Text>
 
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                         <View
@@ -32,9 +30,8 @@ export default function ProfileScreen ({navigation}) {
                             }}
                         >
                             <Text style={{ color: '#ffffff' }}>แก้ไขข้อมูลส่วนตัว</Text>
-
                             <FontAwesome5
-                                name="chevron-right"
+                                name='chevron-right'
                                 size={10}
                                 style={{
                                     marginTop: 5,
@@ -51,7 +48,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>ห้องโปรดของคุณ</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -59,7 +56,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>การชำระเงิน</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -67,7 +64,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>ชวนเพื่อน</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -75,7 +72,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>การตั้งค่า</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -83,7 +80,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>ศูนย์ความช่วยเหลือ</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -91,7 +88,7 @@ export default function ProfileScreen ({navigation}) {
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <View style={styles.menuView}>
                     <Text style={styles.menuText}>นโยบายของแอพพลิเคชั่น</Text>
-                    <FontAwesome5 name="chevron-right" size={15} style={styles.menuIcon} />
+                    <FontAwesome5 name='chevron-right' size={15} style={styles.menuIcon} />
                 </View>
             </TouchableOpacity>
 
@@ -105,12 +102,7 @@ export default function ProfileScreen ({navigation}) {
     )
 };
 
-
 const styles = StyleSheet.create({
-    body: {
-        backgroundColor: "gainsboro",
-        flex: 1,
-    },
     logoutText: {
         color: '#de4032',
         textAlign: 'center',
@@ -147,13 +139,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     username: {
+        width: 215,
         color: '#ffffff',
         fontWeight: 'bold',
         fontSize: 24,
     },
     profile: {
-        height: 70,
-        width: 70,
+        height: 65,
+        width: 65,
         resizeMode: 'cover',
         borderRadius: 50,
     },

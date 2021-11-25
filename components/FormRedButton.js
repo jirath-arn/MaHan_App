@@ -1,10 +1,8 @@
 import React from 'react';
-import {Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { windowHeight } from './Dimension';
 
-import { windowHeight, windowWidth } from './Dimension';
-
-
-const FormButton = ({buttonTitle, ...rest}) => {
+const FormButton = ({ buttonTitle, ...rest }) => {
     return (
         <TouchableOpacity style={styles.buttonContainer} {...rest}>
             <Text style={styles.buttonText}>{buttonTitle}</Text>
@@ -16,7 +14,7 @@ export default FormButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        marginTop: 10,
+        marginTop: 20,
         width: '100%',
         height: windowHeight / 15,
         backgroundColor: 'darkred',

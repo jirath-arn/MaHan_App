@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { windowHeight } from '../../components/Dimension';
 
-
 export default StyleSheet.create({
+    body: {
+        // backgroundColor: 'gainsboro',
+        backgroundColor: '#f0f0f0',
+    },
     header: {
         backgroundColor: '#ffffff',
         width: '100%',

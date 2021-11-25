@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
-import firebase from '@react-native-firebase/app'
+// import { initializeApp } from 'firebase/app';
+import firebase from '@react-native-firebase/app';
+import firestore from '@react-native-firebase/firestore';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,7 +16,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-if(!firebase.app.length){
-    firebase.initializeApp(firebaseConfig);
+if (!firebase.app.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
 }
-export {firebase}
+
+firebase.firestore();
+export default firebase;
+// export { firebase };

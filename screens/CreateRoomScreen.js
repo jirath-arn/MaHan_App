@@ -1,85 +1,197 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Alert,Button} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import React, { useEffect, useState } from 'react';
+
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
+import firebase from '../firebase/Firebase';
+import Loading from '../components/Loading';
 import stylesApp from '../assets/css/Styles';
 
-const CreateRoom = ({ navigation }) => {
-
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-
-    const reloadHandler = () =>{
-        setName("");
-        setDescription("");
-        setPassword("");
-        setConfirmPassword("");
+export default class CreateRoomScreen extends Component {
+    constructor() {
+        super();
+        this.dbRooms = firebase.firestore().collection('rooms');
+        this.state = {
+            nameRoom: '',
+            description: '',
+            password: '',
+            confirmPassword: '',
+            isLoading: false
+        };
     }
 
-    function submitHandler(name, description, password, confirmPassword){
-        if (name == '' || description == '' || password == '' || confirmPassword == ''){
-            Alert.alert("แจ้งเตือน!","กรุณาเติมคำในช่องว่างให้ครบ", [
-                {text: "เข้าใจแล้ว", onPress: () => console.log("alert closed")}                
-            ]);
+    inputValueUpdate = (val, prop) => {
+        const state = this.state;
+        state[prop] = val;
+        this.setState(state);
+    }
+
+    storeRoom() {
+        if (this.state.nameRoom == '') {
+            alert('Please enter room name');
+        } else if (this.state.password != this.state.confirmPassword) {
+            alert('Passwords do not match');
         } else {
-            reloadHandler();
-            Alert.alert("สำเร็จ!","สร้างห้องสำเร็จ", [
-                {text: "เสร็จสิ้น", onPress: () => navigation.navigate('Home')}
-            ]);
-            
+            this.setState({
+                isLoading: true,
+            });
+            this.dbRooms.add({
+                nameRoom: this.state.nameRoom,
+                description: this.state.description,
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+            })
+                .then((res) => {
+                    this.setState({
+                        nameRoom: '',
+                        description: '',
+                        password: '',
+                        confirmPassword: '',
+                        isLoading: false,
+                    });
+                    this.props.navigation.navigate('Home');
+                })
+                .catch((err) => {
+                    console.error("Error found: ", err);
+                    this.setState({
+                        isLoading: false,
+                    });
+                });
         }
     }
 
-    return (
-        <View style={styles.body}>
-            <View style={stylesApp.header}>
-                <Text style={stylesApp.headerText}>สร้างห้อง</Text>
+    render() {
+        if (this.state.isLoading) {
+            return (
+                <Loading />
+            )
+        }
+
+        return (
+            <View>
+                <View style={stylesApp.header}>
+                    <Text style={stylesApp.headerText}>สร้างห้อง</Text>
+                </View>
+
+                <View style={styles.container}>
+                    <SafeAreaView>
+                        <TextInput
+                            value={this.state.nameRoom}
+                            style={styles.inputText}
+                            placeholder='ชื่อห้อง'
+                            onChangeText={(val) => this.inputValueUpdate(val, 'nameRoom')}
+                        />
+                        <TextInput
+                            value={this.state.description}
+                            style={styles.inputText}
+                            placeholder='คำอธิบาย'
+                            onChangeText={(val) => this.inputValueUpdate(val, 'description')}
+                        />
+                        <TextInput
+                            value={this.state.password}
+                            style={styles.inputText}
+                            placeholder='รหัสผ่าน'
+                            secureTextEntry={true}
+                            onChangeText={(val) => this.inputValueUpdate(val, 'password')}
+                        />
+                        <TextInput
+                            value={this.state.confirmPassword}
+                            style={styles.inputText}
+                            placeholder='ยืนยันรหัสผ่าน'
+                            secureTextEntry={true}
+                            onChangeText={(val) => this.inputValueUpdate(val, 'confirmPassword')}
+                        />
+                    </SafeAreaView>
+
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.storeRoom()}
+                    >
+                        <Text style={styles.headerText}>สร้างห้อง</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            
-            <View  style={styles.container}>
-                <SafeAreaView >
-                    <TextInput
-                        value={name}
-                        style={styles.inputText}
-                        placeholder="ชื่อห้อง"
-                        onFocus={(userName) => setName(userName)}
-                        
-                    />
-                    <TextInput 
-                        value={description}
-                        style={styles.inputText}
-                        onFocus={(Des) => setDescription(Des)}
-                        placeholder="คำอธิบาย"
-                    />
-                    <TextInput 
-                        value={password}
-                        style={styles.inputText}
-                        onFocus={(password) => setPassword(password)}
-                        placeholder="รหัสผ่าน"
-                        secureTextEntry={true}
-                    />
-                    <TextInput 
-                        value={confirmPassword}
-                        style={styles.inputText}
-                        onChangeText={(conpass) => setConfirmPassword(conpass)}
-                        placeholder="ยืนยันรหัสผ่าน"
-                        secureTextEntry={true}
-                    />
-                </SafeAreaView>
+        )
+    }
+}
 
-                <TouchableOpacity style={styles.button}
-                    onPress={() => submitHandler(name, description, password, confirmPassword)}>
-                    <Text style={styles.headerText}>สร้างห้อง</Text>
-                </TouchableOpacity>
 
-            </View>
-        </View>
-    );
-};
 
-export default CreateRoom;
+// const CreateRoom = ({ navigation }) => {
+
+//     const [name, setName] = useState("");
+//     const [description, setDescription] = useState("");
+//     const [password, setPassword] = useState("");
+//     const [confirmPassword, setConfirmPassword] = useState("");
+
+//     const reloadHandler = () => {
+//         setName("");
+//         setDescription("");
+//         setPassword("");
+//         setConfirmPassword("");
+//     }
+
+//     function submitHandler(name, description, password, confirmPassword) {
+//         if (name == '' || description == '' || password == '' || confirmPassword == '') {
+//             Alert.alert("แจ้งเตือน!", "กรุณาเติมคำในช่องว่างให้ครบ", [
+//                 { text: "เข้าใจแล้ว", onPress: () => console.log("alert closed") }
+//             ]);
+//         } else {
+//             reloadHandler();
+//             Alert.alert("สำเร็จ!", "สร้างห้องสำเร็จ", [
+//                 { text: "เสร็จสิ้น", onPress: () => navigation.navigate('Home') }
+//             ]);
+
+//         }
+//     }
+
+//     return (
+//         <View>
+//             <View style={stylesApp.header}>
+//                 <Text style={stylesApp.headerText}>สร้างห้อง</Text>
+//             </View>
+
+//             <View style={styles.container}>
+//                 <SafeAreaView >
+//                     <TextInput
+//                         value={name}
+//                         style={styles.inputText}
+//                         placeholder="ชื่อห้อง"
+//                         onFocus={(userName) => setName(userName)}
+
+//                     />
+//                     <TextInput
+//                         value={description}
+//                         style={styles.inputText}
+//                         onFocus={(Des) => setDescription(Des)}
+//                         placeholder="คำอธิบาย"
+//                     />
+//                     <TextInput
+//                         value={password}
+//                         style={styles.inputText}
+//                         onFocus={(password) => setPassword(password)}
+//                         placeholder="รหัสผ่าน"
+//                         secureTextEntry={true}
+//                     />
+//                     <TextInput
+//                         value={confirmPassword}
+//                         style={styles.inputText}
+//                         onChangeText={(conpass) => setConfirmPassword(conpass)}
+//                         placeholder="ยืนยันรหัสผ่าน"
+//                         secureTextEntry={true}
+//                     />
+//                 </SafeAreaView>
+
+//                 <TouchableOpacity style={styles.button}
+//                     onPress={() => submitHandler(name, description, password, confirmPassword)}>
+//                     <Text style={styles.headerText}>สร้างห้อง</Text>
+//                 </TouchableOpacity>
+
+//             </View>
+//         </View>
+//     );
+// };
+
+// export default CreateRoom;
 
 const styles = StyleSheet.create({
     body: {
@@ -91,9 +203,9 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 10,
         backgroundColor: "#fb726a",
-        borderRadius:10,
+        borderRadius: 10,
         marginTop: 35,
-      },
+    },
     header: {
         backgroundColor: 'white',
         width: '100%',
@@ -147,5 +259,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.75,
         shadowRadius: 5,
         elevation: 9,
-      },
+    },
 })

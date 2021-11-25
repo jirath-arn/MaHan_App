@@ -1,16 +1,20 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SignUpScreen from '../screens/SignUpScreen';
+
 import LoginScreen from '../screens/LoginScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 import MainScreen from '../screens/MainScreen';
-import RoomScreen from '../screens/RoomScreen';
+
 import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
-import CreateRoom from '../screens/CreateRoomScreen';
+import CreateRoomScreen from '../screens/CreateRoomScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
+import RoomScreen from '../screens/RoomScreen';
+
 const Stack = createStackNavigator();
+
 export default function AuthStack() {
     return (
         <Stack.Navigator initialRouteName='Login'>
@@ -21,7 +25,7 @@ export default function AuthStack() {
             />
             <Stack.Screen
                 name='SignUp'
-                component={SignUpScreen} 
+                component={SignUpScreen}
                 options={{ header: () => null }}
 
             />
@@ -35,36 +39,25 @@ export default function AuthStack() {
                 name='Room'
                 component={RoomScreen}
                 options={{ header: () => null }}
-
             />
             {/* <Stack.Screen
-                name="Main"
-                component={MainScreen}
-                options={{ header: () => null }}
-            />
-
-            <Stack.Screen
-                name="Home"
+                name='Home'
                 component={HomeScreen}
             />
-
             <Stack.Screen
-                name="Chat"
+                name='Chat'
                 component={ChatScreen}
             />
-
             <Stack.Screen
-                name="CreateRoom"
-                component={CreateRoom}
+                name='CreateRoom'
+                component={CreateRoomScreen}
             />
-
             <Stack.Screen
-                name="Notification"
+                name='Notification'
                 component={NotificationScreen}
             />
-
             <Stack.Screen
-                name="Profile"
+                name='Profile'
                 component={ProfileScreen}
             /> */}
         </Stack.Navigator>
