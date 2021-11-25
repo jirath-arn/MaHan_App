@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 import firebase from '../firebase/Firebase';
+import DropDownPicker from 'react-native-dropdown-picker';
 import Loading from '../components/Loading';
 import stylesApp from '../assets/css/Styles';
 
@@ -38,7 +39,8 @@ export default class CreateRoomScreen extends Component {
                 nameRoom: this.state.nameRoom,
                 description: this.state.description,
                 password: this.state.password,
-                confirmPassword: this.state.confirmPassword,
+                // image_url: 'https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png', // Netflix
+                image_url: 'https://s.isanook.com/hi/0/ud/298/1494545/5.jpg', // Youtube
             })
                 .then((res) => {
                     this.setState({
@@ -67,7 +69,7 @@ export default class CreateRoomScreen extends Component {
         }
 
         return (
-            <View>
+            <View style={stylesApp.body}>
                 <View style={stylesApp.header}>
                     <Text style={stylesApp.headerText}>สร้างห้อง</Text>
                 </View>
@@ -79,6 +81,17 @@ export default class CreateRoomScreen extends Component {
                             style={styles.inputText}
                             placeholder='ชื่อห้อง'
                             onChangeText={(val) => this.inputValueUpdate(val, 'nameRoom')}
+                        />
+                        <DropDownPicker
+                            items={[
+                                { label: 'Item 1', value: 'item1' },
+                                { label: 'Item 2', value: 'item2' },
+                                { label: 'Item 3', value: 'item3' },
+                                { label: 'Item 4', value: 'item4' },
+                            ]}
+                            defaultIndex={2}
+                            containerStyle={{ height: 100 }}
+                            onChangeItem={item => console.log(item.label, item.value)}
                         />
                         <TextInput
                             value={this.state.description}
