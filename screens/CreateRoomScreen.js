@@ -1,9 +1,7 @@
 // import React, { useEffect, useState } from 'react';
-
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 import firebase from '../firebase/Firebase';
-import DropDownPicker from 'react-native-dropdown-picker';
 import Loading from '../components/Loading';
 import stylesApp from '../assets/css/Styles';
 
@@ -16,6 +14,7 @@ export default class CreateRoomScreen extends Component {
             description: '',
             password: '',
             confirmPassword: '',
+            category: '',
             isLoading: false
         };
     }
@@ -27,20 +26,39 @@ export default class CreateRoomScreen extends Component {
     }
 
     storeRoom() {
-        if (this.state.nameRoom == '') {
-            alert('Please enter room name');
+        if (this.state.nameRoom == '' || this.state.category == '') {
+            alert('Please enter room name or category');
         } else if (this.state.password != this.state.confirmPassword) {
             alert('Passwords do not match');
         } else {
             this.setState({
                 isLoading: true,
             });
+
+            if (this.state.description == '') {
+                this.setState({
+                    description: '-',
+                });
+            }
+
+            if(this.state.category == 'Netflix') {
+                this.setState({
+                    category: 'Netflix',
+                    image_url: 'https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png',
+                });
+            } else {
+                this.setState({
+                    category: 'Youtube Premium',
+                    image_url: 'https://s.isanook.com/hi/0/ud/298/1494545/5.jpg',
+                });
+            }
+
             this.dbRooms.add({
                 nameRoom: this.state.nameRoom,
                 description: this.state.description,
                 password: this.state.password,
-                // image_url: 'https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png', // Netflix
-                image_url: 'https://s.isanook.com/hi/0/ud/298/1494545/5.jpg', // Youtube
+                category: this.state.category,
+                image_url: this.state.image_url,
             })
                 .then((res) => {
                     this.setState({
@@ -48,9 +66,13 @@ export default class CreateRoomScreen extends Component {
                         description: '',
                         password: '',
                         confirmPassword: '',
+                        category: '',
                         isLoading: false,
                     });
-                    this.props.navigation.navigate('Home');
+
+                    this.props.navigation.navigate('Room', {
+                        roomkey: res.id
+                    });
                 })
                 .catch((err) => {
                     console.error("Error found: ", err);
@@ -82,16 +104,11 @@ export default class CreateRoomScreen extends Component {
                             placeholder='ชื่อห้อง'
                             onChangeText={(val) => this.inputValueUpdate(val, 'nameRoom')}
                         />
-                        <DropDownPicker
-                            items={[
-                                { label: 'Item 1', value: 'item1' },
-                                { label: 'Item 2', value: 'item2' },
-                                { label: 'Item 3', value: 'item3' },
-                                { label: 'Item 4', value: 'item4' },
-                            ]}
-                            defaultIndex={2}
-                            containerStyle={{ height: 100 }}
-                            onChangeItem={item => console.log(item.label, item.value)}
+                        <TextInput
+                            value={this.state.category}
+                            style={styles.inputText}
+                            placeholder='หมวดหมู่'
+                            onChangeText={(val) => this.inputValueUpdate(val, 'category')}
                         />
                         <TextInput
                             value={this.state.description}
@@ -217,7 +234,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: "#fb726a",
         borderRadius: 10,
-        marginTop: 35,
+        marginTop: 20,
     },
     header: {
         backgroundColor: 'white',
@@ -254,10 +271,10 @@ const styles = StyleSheet.create({
         elevation: 9,
     },
     headerText: {
-        color: 'black',
+        color: '#000000',
         fontWeight: 'bold',
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 22,
     },
     button: {
         alignItems: "center",
@@ -269,6 +286,7 @@ const styles = StyleSheet.create({
             width: 5,
             height: 5,
         },
+        borderRadius: 10,
         shadowOpacity: 0.75,
         shadowRadius: 5,
         elevation: 9,
