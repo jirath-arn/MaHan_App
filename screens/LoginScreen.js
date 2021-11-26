@@ -49,9 +49,9 @@ export default function LoginScreen({ navigation }) {
                 secureTextEntry={true}
             />
 
-            <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('Main')}>
                 <Text>Click Me to Main</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             {/* SignIn */}
             <FormButton
