@@ -15,6 +15,7 @@ export default class CreateRoomScreen extends Component {
             password: '',
             confirmPassword: '',
             category: '',
+            image_url: '',
             isLoading: false
         };
     }
@@ -36,21 +37,15 @@ export default class CreateRoomScreen extends Component {
             });
 
             if (this.state.description == '') {
-                this.setState({
-                    description: '-',
-                });
+                this.inputValueUpdate('-', 'description');
             }
 
             if(this.state.category == 'Netflix') {
-                this.setState({
-                    category: 'Netflix',
-                    image_url: 'https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png',
-                });
+                this.inputValueUpdate('Netflix', 'category');
+                this.inputValueUpdate('https://digitalagemag.com/wp-content/uploads/2021/01/netflix.png', 'image_url');
             } else {
-                this.setState({
-                    category: 'Youtube Premium',
-                    image_url: 'https://s.isanook.com/hi/0/ud/298/1494545/5.jpg',
-                });
+                this.inputValueUpdate('Youtube Premium', 'category');
+                this.inputValueUpdate('https://s.isanook.com/hi/0/ud/298/1494545/5.jpg', 'image_url');
             }
 
             this.dbRooms.add({
@@ -67,6 +62,7 @@ export default class CreateRoomScreen extends Component {
                         password: '',
                         confirmPassword: '',
                         category: '',
+                        image_url: '',
                         isLoading: false,
                     });
 
